@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import { filterContact } from 'redux/contacts-actions';
+import { filterContact } from 'redux/contacts/contacts-actions';
 import {
   addContact,
   fetchContact,
   deleteContact,
-} from 'redux/contacts-operations';
+} from 'redux/contacts/contacts-operations';
 
 const filterReducer = createReducer('', {
   [filterContact]: (_, { payload }) => payload,

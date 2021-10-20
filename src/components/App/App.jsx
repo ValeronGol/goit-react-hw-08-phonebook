@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { getIsLoading, getError } from 'redux/contacts-selectors';
-import { fetchContact } from 'redux/contacts-operations';
+import { getIsLoading, getError } from 'redux/contacts/contacts-selectors';
+import { fetchContact } from 'redux/contacts/contacts-operations';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';

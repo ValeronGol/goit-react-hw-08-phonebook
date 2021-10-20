@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { addContact } from 'redux/contacts-operations';
-import { getContacts } from 'redux/contacts-selectors';
+import { addContact } from 'redux/contacts/contacts-operations';
+import { getContacts } from 'redux/contacts/contacts-selectors';
 import { ConteinerForm, Label, Button, Input } from './ContactForm.styled';
 
 export default function ContactForm() {
