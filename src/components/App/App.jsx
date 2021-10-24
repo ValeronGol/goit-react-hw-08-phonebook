@@ -1,11 +1,14 @@
 import { useEffect, Suspense, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { authOperations } from 'redux/auth/auth-operations';
+import authSelectors from 'redux/auth/auth-selectors';
 import AppBar from 'components/AppBar/AppBar';
 import PrivateRoute from 'components/Route/PrivateRoute';
 import PublicRoute from 'components/Route/PublicRoute';
 import { LoaderMore } from 'components/Loader/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Container } from './App.styled';
 
 const HomeView = lazy(() => import('views/HomeView'));
@@ -14,11 +17,35 @@ const LoginView = lazy(() => import('views/LoginView'));
 const ContactsView = lazy(() => import('views/ContactsView'));
 
 export default function App() {
+  const isError = useSelector(authSelectors.getError);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
+
+  const Message = () => (
+    <div>
+      Error, please try again... <br />
+      <br /> May be incorrect Login or Password...
+    </div>
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(<Message />, {
+        theme: 'colored',
+        icon: '😵',
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [isError]);
 
   return (
     <Container>
@@ -39,6 +66,7 @@ export default function App() {
           </PrivateRoute>
         </Suspense>
       </Switch>
+      <ToastContainer />
     </Container>
   );
 }

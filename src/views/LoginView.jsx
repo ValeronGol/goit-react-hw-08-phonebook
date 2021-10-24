@@ -58,6 +58,8 @@ export default function LoginView() {
             name="password"
             value={password}
             onChange={handleChange}
+            minLength="7"
+            title="Пароль должен быть не менее 7 символов"
           />
         </label>
 
