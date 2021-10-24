@@ -1,12 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
-import AppBar from 'components/AppBar/AppBar';
-import ContactsView from 'views/ContactsView';
-import RegisterView from 'views/RegisterView';
-import LoginView from 'views/LoginView';
+import { Switch } from 'react-router-dom';
 import { authOperations } from 'redux/auth/auth-operations';
+import AppBar from 'components/AppBar/AppBar';
+import PrivateRoute from 'components/Route/PrivateRoute';
+import PublicRoute from 'components/Route/PublicRoute';
+import { LoaderMore } from 'components/Loader/Loader';
 import { Container } from './App.styled';
+
+const HomeView = lazy(() => import('views/HomeView'));
+const RegisterView = lazy(() => import('views/RegisterView'));
+const LoginView = lazy(() => import('views/LoginView'));
+const ContactsView = lazy(() => import('views/ContactsView'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,9 +24,20 @@ export default function App() {
     <Container>
       <AppBar />
       <Switch>
-        <Route path="/register" component={RegisterView} />
-        <Route path="/login" component={LoginView} />
-        <Route path="/contacts" component={ContactsView} />
+        <Suspense fallback={<LoaderMore />}>
+          <PublicRoute exact path="/">
+            <HomeView />
+          </PublicRoute>
+          <PublicRoute exact path="/register" restricted>
+            <RegisterView />
+          </PublicRoute>
+          <PublicRoute exact path="/login" redirectTo="/contacts" restricted>
+            <LoginView />
+          </PublicRoute>
+          <PrivateRoute path="/contacts" redirectTo="/login">
+            <ContactsView />
+          </PrivateRoute>
+        </Suspense>
       </Switch>
     </Container>
   );

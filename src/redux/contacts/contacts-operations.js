@@ -1,14 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { token } from 'redux/auth/auth-operations';
 
 export const fetchContact = createAsyncThunk(
   'contacts/fetchContacts',
-  async (_, { rejectWithValue }) => {
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.token;
+
+    if (!persistToken) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistToken);
     try {
-      const { data } = await axios.get('/contacts');
-      return data;
+      const user = await axios.get('/contacts');
+      return user.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   },
 );
