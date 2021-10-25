@@ -11,9 +11,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Container } from './App.styled';
 
-const HomeView = lazy(() => import('views/HomeView'));
-const RegisterView = lazy(() => import('views/RegisterView'));
-const LoginView = lazy(() => import('views/LoginView'));
+const HomeView = lazy(() => import('views/HomeView/HomeView'));
+const RegisterView = lazy(() => import('views/RegisterView/RegisterView'));
+const LoginView = lazy(() => import('views/LoginView/LoginView'));
 const ContactsView = lazy(() => import('views/ContactsView'));
 
 export default function App() {

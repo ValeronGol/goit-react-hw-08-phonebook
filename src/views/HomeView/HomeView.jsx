@@ -1,29 +1,16 @@
 import React from 'react';
-
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { Container, Title } from './HomeView.styled';
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
+  <Container>
+    <Title>
       Добро пожаловать в телефонную книгу, пожалуйста зарегистрируйтесь или
       войдите{' '}
       <span role="img" aria-label="Иконка приветствия">
         💁‍♀️
       </span>
-    </h1>
-  </div>
+    </Title>
+  </Container>
 );
 
 export default HomeView;

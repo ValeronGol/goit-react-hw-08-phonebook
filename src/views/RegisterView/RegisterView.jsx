@@ -1,25 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/auth-operations';
+import { Form, Label } from './RegisterView.styled';
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
-
-export default function LoginView() {
+export default function RegisterView() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
+      case 'name':
+        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -31,17 +24,23 @@ export default function LoginView() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.register({ name, email, password }));
+    setName('');
     setEmail('');
     setPassword('');
   };
 
   return (
     <div>
-      <h1>Страница логина</h1>
+      <h1>Страница регистрации</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Label>
+          Имя
+          <input type="text" name="name" value={name} onChange={handleChange} />
+        </Label>
+
+        <Label>
           Почта
           <input
             type="email"
@@ -49,9 +48,9 @@ export default function LoginView() {
             value={email}
             onChange={handleChange}
           />
-        </label>
+        </Label>
 
-        <label style={styles.label}>
+        <Label>
           Пароль
           <input
             type="password"
@@ -62,10 +61,10 @@ export default function LoginView() {
             minLength="7"
             title="Пароль должен быть не менее 7 символов"
           />
-        </label>
+        </Label>
 
-        <button type="submit">Войти</button>
-      </form>
+        <button type="submit">Зарегистрироваться</button>
+      </Form>
     </div>
   );
 }
