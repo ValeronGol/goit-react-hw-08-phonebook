@@ -16,6 +16,10 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isError = false;
+    },
+    [authOperations.register.pending](state, action) {
+      state.isError = false;
     },
     [authOperations.register.rejected](state, action) {
       state.isError = true;
@@ -25,6 +29,10 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isError = false;
+    },
+    [authOperations.logIn.pending](state, action) {
+      state.isError = false;
     },
     [authOperations.logIn.rejected](state, action) {
       state.isError = true;
@@ -33,13 +41,12 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
-    },
-    [authOperations.logOut.rejected](state, action) {
-      state.isError = true;
+      state.isError = false;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
+      state.isError = false;
     },
   },
 });
