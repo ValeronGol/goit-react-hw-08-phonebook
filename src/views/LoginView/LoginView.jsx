@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/auth-operations';
 import { Form, Label } from './LoginView.styled';
+import Button from '@mui/material/Button';
 
 export default function LoginView() {
   const [email, setEmail] = useState('');
@@ -54,7 +55,9 @@ export default function LoginView() {
           />
         </Label>
 
-        <button type="submit">Войти</button>
+        <Button variant="contained" type="submit">
+          Войти
+        </Button>
       </Form>
     </div>
   );

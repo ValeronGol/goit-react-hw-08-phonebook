@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/auth-operations';
-import { Form, Label } from './RegisterView.styled';
+import { Form } from './RegisterView.styled';
+import { TextField, Button } from '@mui/material';
 
 export default function RegisterView() {
   const [name, setName] = useState('');
@@ -35,35 +36,44 @@ export default function RegisterView() {
       <h1>Страница регистрации</h1>
 
       <Form onSubmit={handleSubmit} autoComplete="off">
-        <Label>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </Label>
+        <TextField
+          fullWidth
+          helperText="Please enter your name"
+          id="demo-helper-text-aligned"
+          label="Name"
+          size="string"
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          helperText="Please enter your email"
+          id="demo-helper-text-aligned"
+          label="Email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+        />
+        <TextField
+          fullWidth
+          helperText="Please enter your password"
+          id="demo-helper-text-aligned"
+          label="Password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          autoComplete="off"
+          minLength="7"
+          title="Пароль должен быть не менее 7 символов"
+        />
 
-        <Label>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </Label>
-
-        <Label>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            autoComplete="off"
-            minLength="7"
-            title="Пароль должен быть не менее 7 символов"
-          />
-        </Label>
-
-        <button type="submit">Зарегистрироваться</button>
+        <Button variant="contained" type="submit">
+          Зарегистрироваться
+        </Button>
       </Form>
     </div>
   );
