@@ -1,14 +1,14 @@
 import React from 'react';
 import MoodIcon from '@mui/icons-material/Mood';
-import { Container, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const HomeView = () => (
-  <Container maxWidth="xl" fixed>
-    <Typography align="center" variant="h1">
+  <Box p={5}>
+    <Typography align="center" variant="h3">
       Welcome to the Phonebook, Please registration or login{' '}
       <MoodIcon color="primary" fontSize="inherit" aria-label="icon" />
     </Typography>
-  </Container>
+  </Box>
 );
 
 export default HomeView;

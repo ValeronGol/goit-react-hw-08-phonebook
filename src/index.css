@@ -6,6 +6,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('https://static8.depositphotos.com/1029554/813/i/600/depositphotos_8138619-stock-photo-old-style-phone-over-yellow.jpg')
+    no-repeat center top fixed;
+
+  background-size: cover;
 }
 
 code {
