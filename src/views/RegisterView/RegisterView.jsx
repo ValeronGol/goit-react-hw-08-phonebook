@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/auth-operations';
 import { Form } from './RegisterView.styled';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Container } from '@mui/material';
 
 export default function RegisterView() {
   const [name, setName] = useState('');
@@ -32,14 +32,12 @@ export default function RegisterView() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
-
+    <Container maxWidth="xs" fixed>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <TextField
           fullWidth
           helperText="Please enter your name"
-          id="demo-helper-text-aligned"
+          margin="dense"
           label="Name"
           size="string"
           type="text"
@@ -50,7 +48,7 @@ export default function RegisterView() {
         <TextField
           fullWidth
           helperText="Please enter your email"
-          id="demo-helper-text-aligned"
+          margin="dense"
           label="Email"
           type="email"
           name="email"
@@ -60,7 +58,7 @@ export default function RegisterView() {
         <TextField
           fullWidth
           helperText="Please enter your password"
-          id="demo-helper-text-aligned"
+          margin="dense"
           label="Password"
           type="password"
           name="password"
@@ -72,9 +70,9 @@ export default function RegisterView() {
         />
 
         <Button variant="contained" type="submit">
-          Зарегистрироваться
+          Registration
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 }

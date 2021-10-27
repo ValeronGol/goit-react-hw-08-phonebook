@@ -5,10 +5,10 @@ export default function AuthNav() {
   return (
     <div>
       <StyledNavLink to="/register" exact>
-        Регистрация
+        Registration
       </StyledNavLink>
       <StyledNavLink to="/login" exact>
-        Логин
+        Login
       </StyledNavLink>
     </div>
   );

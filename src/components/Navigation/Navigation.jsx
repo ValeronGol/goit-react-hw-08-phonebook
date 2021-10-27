@@ -7,13 +7,14 @@ const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <nav>
-      <StyledNavLink to="/" exact>
-        Главная
-      </StyledNavLink>
-      {isLoggedIn && (
+      {!isLoggedIn ? (
+        <StyledNavLink to="/" exact>
+          Home
+        </StyledNavLink>
+      ) : (
         <>
           <StyledNavLink to="/contacts" exact>
-            Контакты
+            Phonebook
           </StyledNavLink>
         </>
       )}

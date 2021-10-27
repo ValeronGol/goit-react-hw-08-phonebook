@@ -1,20 +1,13 @@
 import React from 'react';
-import { Container, Title } from './HomeView.styled';
 import MoodIcon from '@mui/icons-material/Mood';
+import { Container, Typography } from '@mui/material';
 
 const HomeView = () => (
-  <Container>
-    <Title>
-      Добро пожаловать в телефонную книгу, пожалуйста зарегистрируйтесь или
-      войдите{' '}
-      <MoodIcon
-        color="primary"
-        fontSize="inherit"
-        aria-label="Иконка приветствия"
-      >
-        💁‍♀️
-      </MoodIcon>
-    </Title>
+  <Container maxWidth="xl" fixed>
+    <Typography align="center" variant="h1">
+      Welcome to the Phonebook, Please registration or login{' '}
+      <MoodIcon color="primary" fontSize="inherit" aria-label="icon" />
+    </Typography>
   </Container>
 );
 

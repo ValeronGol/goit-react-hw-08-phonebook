@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/auth-operations';
-import { Form, Label } from './LoginView.styled';
-import Button from '@mui/material/Button';
+import { Form } from './LoginView.styled';
+import { TextField, Button, Container } from '@mui/material';
 
 export default function LoginView() {
   const [email, setEmail] = useState('');
@@ -28,37 +28,37 @@ export default function LoginView() {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
-
+    <Container maxWidth="xs" fixed>
       <Form onSubmit={handleSubmit} autoComplete="off">
-        <Label>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </Label>
+        <TextField
+          fullWidth
+          helperText="Please enter your email"
+          margin="dense"
+          label="Email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleChange}
+        />
 
-        <Label>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            autoComplete="off"
-            minLength="7"
-            title="Пароль должен быть не менее 7 символов"
-          />
-        </Label>
+        <TextField
+          fullWidth
+          helperText="Please enter your password"
+          margin="dense"
+          label="Password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          autoComplete="off"
+          minLength="7"
+          title="Пароль должен быть не менее 7 символов"
+        />
 
         <Button variant="contained" type="submit">
           Войти
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 }
