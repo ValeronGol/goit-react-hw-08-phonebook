@@ -11,16 +11,7 @@ export default function RegisterView() {
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'name':
-        return setName(value);
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
+    name === 'email' ? setEmail(value) : setPassword(value);
   };
 
   const handleSubmit = e => {

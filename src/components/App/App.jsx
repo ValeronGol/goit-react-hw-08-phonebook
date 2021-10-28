@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { authOperations } from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
-import AppBarNav from 'components/AppBar/AppBar';
-import PrivateRoute from 'components/Route/PrivateRoute';
-import PublicRoute from 'components/Route/PublicRoute';
+import Header from 'components/Header/Header';
+import PrivateRoute from 'components/routes/PrivateRoute';
+import PublicRoute from 'components/routes/PublicRoute';
 import { LoaderMore } from 'components/Loader/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ import { Container } from './App.styled';
 const HomeView = lazy(() => import('views/HomeView/HomeView'));
 const RegisterView = lazy(() => import('views/RegisterView/RegisterView'));
 const LoginView = lazy(() => import('views/LoginView/LoginView'));
-const ContactsView = lazy(() => import('views/ContactsView'));
+const ContactsView = lazy(() => import('views/ContactsView/ContactsView'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <Container>
-      <AppBarNav />
+      <Header />
       <Switch>
         <Suspense fallback={<LoaderMore />}>
           <PublicRoute exact path="/">

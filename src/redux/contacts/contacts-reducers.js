@@ -8,22 +8,22 @@ import {
 } from 'redux/contacts/contacts-operations';
 
 const filterReducer = createReducer('', {
-  [filterContact]: (_, { payload }) => payload,
+  [filterContact]: (_state, { payload }) => payload,
 });
 
 export const contactsReducer = createReducer([], {
-  [fetchContact.fulfilled]: (_, { payload }) => payload,
+  [fetchContact.fulfilled]: (_state, { payload }) => payload,
   [addContact.fulfilled]: (state, { payload }) => [...state, payload],
   [deleteContact.fulfilled]: (state, { payload }) =>
     state.filter(contact => contact.id !== payload),
 });
 
 export const errorReducer = createReducer(null, {
-  [fetchContact.rejected]: (_, { payload }) => payload,
+  [fetchContact.rejected]: (_state, { payload }) => payload,
   [fetchContact.pending]: () => false,
-  [addContact.rejected]: (_, { payload }) => payload,
+  [addContact.rejected]: (_state, { payload }) => payload,
   [addContact.pending]: () => false,
-  [deleteContact.rejected]: (_, { payload }) => payload,
+  [deleteContact.rejected]: (_state, { payload }) => payload,
   [deleteContact.pending]: () => false,
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledNavLink } from './AuthNav.styled';
 
-export default function AuthNav() {
+export const AuthNav = () => {
   return (
     <div>
       <StyledNavLink to="/register" exact>
@@ -12,4 +12,4 @@ export default function AuthNav() {
       </StyledNavLink>
     </div>
   );
-}
+};

@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
-import AuthNav from 'components/AuthNav/AuthNav';
+import { AuthNav } from 'components/AuthNav/AuthNav';
 import authSelectors from 'redux/auth/auth-selectors';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 
-export default function AppBarNav() {
+export default function Header() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <Box sx={{ flexGrow: 1 }}>
