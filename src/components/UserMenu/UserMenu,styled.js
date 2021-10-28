@@ -10,7 +10,3 @@ export const Name = styled.span`
   margin-right: 12px;
   color: rgb(246, 244, 245);
 `;
-
-export const Avatar = styled.img`
-  margin-right: 4px;
-`;
