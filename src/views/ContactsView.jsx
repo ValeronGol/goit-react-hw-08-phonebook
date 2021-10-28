@@ -9,6 +9,7 @@ import Filter from 'components/Filter/Filter';
 import { LoaderMore } from 'components/Loader/Loader';
 import { ErrorMessage } from 'components/ErrorMessage/ErrorMessage';
 import 'react-toastify/dist/ReactToastify.css';
+import { Typography, Box } from '@mui/material';
 
 export default function ContactsView() {
   const isLoading = useSelector(getIsLoading);
@@ -20,14 +21,16 @@ export default function ContactsView() {
   }, [dispatch]);
 
   return (
-    <div>
+    <Box sx={{ p: 3 }}>
       <ContactForm />
-      <h2>Contacts</h2>
+      <Box sx={{ p: 2 }}>
+        <Typography variant="h4">Contacts </Typography>
+      </Box>
       <Filter />
       {isLoading && <LoaderMore />}
       {error && <ErrorMessage error={error} />}
       <ContactList />
       <ToastContainer position="top-center" theme="colored" />
-    </div>
+    </Box>
   );
 }

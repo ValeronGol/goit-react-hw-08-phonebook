@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { authOperations } from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
-import AppBar from 'components/AppBar/AppBar';
+import AppBarNav from 'components/AppBar/AppBar';
 import PrivateRoute from 'components/Route/PrivateRoute';
 import PublicRoute from 'components/Route/PublicRoute';
 import { LoaderMore } from 'components/Loader/Loader';
@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <Container>
-      <AppBar />
+      <AppBarNav />
       <Switch>
         <Suspense fallback={<LoaderMore />}>
           <PublicRoute exact path="/">

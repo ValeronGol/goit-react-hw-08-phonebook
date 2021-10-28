@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth/auth-operations';
 import { Form } from './RegisterView.styled';
-import { TextField, Button, Container } from '@mui/material';
+import { TextField, Button, Box } from '@mui/material';
 
 export default function RegisterView() {
   const [name, setName] = useState('');
@@ -32,7 +32,7 @@ export default function RegisterView() {
   };
 
   return (
-    <Container maxWidth="xs" fixed>
+    <Box sx={{ p: 3, display: 'flex', justifyContent: 'center' }}>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <TextField
           fullWidth
@@ -73,6 +73,6 @@ export default function RegisterView() {
           Registration
         </Button>
       </Form>
-    </Container>
+    </Box>
   );
 }

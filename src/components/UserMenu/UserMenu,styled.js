@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const Name = styled.span`
   font-weight: 700;
   margin-right: 12px;
+  color: rgb(246, 244, 245);
 `;
 
 export const Avatar = styled.img`
