@@ -61,7 +61,7 @@ export default function App() {
           </PrivateRoute>
         </Suspense>
       </Switch>
-      <ToastContainer />
+      <ToastContainer position="top-center" theme="colored" />
     </Container>
   );
 }
