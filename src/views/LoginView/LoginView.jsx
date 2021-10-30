@@ -10,6 +10,7 @@ export default function LoginView() {
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
+    name === 'email' ? setEmail(value) : setPassword(value);
     switch (name) {
       case 'email':
         return setEmail(value);
@@ -56,7 +57,7 @@ export default function LoginView() {
         />
 
         <Button variant="contained" type="submit">
-          Войти
+          Login
         </Button>
       </Form>
     </Box>

@@ -11,7 +11,7 @@ export default function UserMenu() {
   return (
     <Container>
       <Avatar src="/broken-image.jpg" sx={{ mr: 1 }} />
-      <Name>Добро пожаловать, {name}</Name>
+      <Name>Welcome, {name}</Name>
       <Button
         color="secondary"
         variant="contained"

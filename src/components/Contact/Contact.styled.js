@@ -6,5 +6,6 @@ export const Conteiner = styled.div`
 export const Info = styled.p`
   margin-right: 10px;
   font-weight: 600;
-  color: rgb(11, 69, 88);
+  font-size: 18px;
+  color: inherit;
 `;
